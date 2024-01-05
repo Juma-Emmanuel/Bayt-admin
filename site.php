@@ -4,8 +4,8 @@
       <meta charset="UTF-8" />
       <title>Jobs</title>
       <link rel="stylesheet" href="site.css" />
-      
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+      <script src="site.js"></script>     
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     </head>
     <body>
       <div class="container">
@@ -41,8 +41,7 @@
               <span class="nav-item">Log out</span>
             </a></li>
           </ul>
-        </nav>
-    
+        </nav>   
     
         <section class="main">
                    
@@ -52,30 +51,31 @@
                 <div class="card">
                   <i class="fa fa-plus" aria-hidden="true"></i>
                   <h3>Create new Job</h3>
-                  <p>Join Over 1 million Students.</p>
+                 
                   <button>Add new Job</button>
                 </div>
                 <div class="card">
-                  <i class="fab fa-wordpress"></i>
-                  <h3>WordPress</h3>
-                  <p>Join Over 3 million Students.</p>
-                  <button>Get Started</button>
+                    <i class="fa fa-laptop" aria-hidden="true"></i>
+                  <h3>Blog</h3>
+                 
+                  <button>Post new Blog</button>
                 </div>
-                <div class="card">
-                  <!-- <i class="fas fa-s"></i> -->
-                  <i class="fa fa-plus" aria-hidden="true"></i>
-                  <h3>graphic design</h3>
-                  <p>Join Over 2 million Students.</p>
-                  <button>Get Started</button>
-                </div>
-              
+                <div class="card">                 
+                    <i class="fa-regular fa-file-lines"></i>                 
+                  <h3>Job Applications</h3>                  
+                  <button>View Applications</button>
+                </div>              
               </div>
+
+            
+      
+         
             <div class="jobs-list">
               <h1>Jobs List</h1>
               <table class="table">
                 <thead>
                     <tr>
-                      <th>Id</th>
+                      <th><?php echo $user->id; ?></th>
                       <th>Name</th>
                       <th>Industry</th>
                       <th>Country</th>
@@ -147,46 +147,66 @@
                         <td>Passport</td>
                         <td><a href="https://www.jobs.site.com">visit site</a></td>
                         <td><button>Edit</button></td>
-                      </tr>
-                 
-                
-                
+                      </tr>                
                 </tbody>
               </table>
             </div>
           </section>
+         <!-- display_jobs.php -->
 
-        
-    <div id="content">
-        <div class="section-display" id="section1">
-            <h2>Section 1 Content</h2>
-            <h1>Jobs List</h1>
-            <p>This is the content of Section 1.</p>
-        </div>
-        <div class="section-display" id="section2">
-            <h2>Section 2 Content</h2>
-            <p>This is the content of Section 2.</p>
-        </div>
-        <div class="section-display" id="section3">
-            <h2>Section 3 Content</h2>
-            <p>This is the content of Section 3.</p>
-        </div>
-    </div>
-</div>
+<?php
 
-<script>
-    function showSection(sectionId) {
-        
-        var sections = document.getElementsByClassName('section-display');
-        for (var i = 0; i < sections.length; i++) {
-            sections[i].classList.remove('active');
-        }
+require_once 'fetchData.php';
 
-        
-        var selectedSection = document.getElementById(sectionId);
-        selectedSection.classList.add('active');
+// Replace 'your_api_endpoint' with the actual endpoint
+
+
+$jobs = fetchJobs();
+
+if ($jobs && is_array($jobs)) {
+    echo '<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Industry</th>
+            <th>Country</th>
+            <th>Company Name</th>
+            <th>Company Region</th>
+            <th>Salary Range</th>
+            <th>Job Description</th>
+            <th>Application Date</th>
+            <th>Job Requirements</th>
+            <th>Application Link</th>
+            <th>Action</th>
+        </tr>
+        </thead>';
+
+    foreach ($jobs as $job) {
+        echo '<tbody>
+        <tr>
+            <td>' . $job->id . '</td>
+            <td>' . $job->name . '</td>
+            <td>' . $job->industry . '</td>
+            <td>' . $job->country . '</td>
+            <td>' . $job->companyName . '</td>
+            <td>' . $job->companyRegion . '</td>
+            <td>' . $job->salaryRange . '</td>
+            <td>' . $job->jobDescription . '</td>
+            <td>' . $job->applicationDate . '</td>
+            <td>' . $job->jobRequirements . '</td>
+            <td><a href="' . $job->applicationLink . '" target="_blank">Apply</a></td>
+            <td><button>Edit</button></td>
+          </tr>
+          </tbody>';
     }
-</script>
+
+    echo '</table>';
+} else {
+    echo 'No data available';
+}
+?>
+
     </body>
     </html>
-    </span>
+ 
