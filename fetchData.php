@@ -27,20 +27,20 @@ function fetchUser() {
     }
  }
 function fetchUsers() {
-    $apiUrl = "http://127.0.0.1:8080/users/";
+    $apiUrl = 'http://127.0.0.1:8081/users/';
     $response = file_get_contents($apiUrl);
 
   
-    $userData = json_decode($response, true);
+    
 
     $users = [];
     foreach ($usersData as $userData) {
         $user = new User(
-            $userData['user_id'],
+            $userData['id'],
             $userData['username'],
-            $userData['full_name'],
+           
             $userData['email'],
-            $userData['address'],         
+                     
         );
 
         $users[] = $user;
@@ -49,11 +49,14 @@ function fetchUsers() {
     return $users;
    
 }
-function fetchJobs()
-{
+function fetchJobs($page = 1, $perPage = 1){
     $apiEndpoint = 'http://127.0.0.1:8080/jobs/';
     $data = file_get_contents($apiEndpoint);
     $jobsData = json_decode($data, true);
+    $usersData = json_decode($response, true);
+    $start = ($page - 1) * $perPage;
+    $end = $start + $perPage;
+    $jobsData = array_slice($jobsData, $start, $perPage);
 
     $jobs = [];
     foreach ($jobsData as $jobData) {

@@ -10,7 +10,7 @@
   font-family: "Poppins", sans-serif;
 }
 body{
-  background: rgb(226, 226, 226);
+  background-color: rgb(226, 226, 226);
 }
 nav{
   position: sticky;
@@ -81,14 +81,91 @@ a:hover i{
 
 .container{
   display: flex;
+  
 }
 
 /* MAin Section */
 .main{
   position: relative;
-  padding: 20px;
+  
+  padding: 0px 20px 20px 20px;
   width: 100%;
 }
+.topbar{
+  background-color: #fff;
+  margin: 0px;
+  padding: 5px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.topbar h1{
+  color: rgb(85, 83, 83);
+}
+.search-container {
+  width: fit-content;  
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+  padding: 5px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.search-box {
+  
+  width: 28vw;
+  flex-grow: 1;  
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  font-size: 16px;
+}
+.search-button {
+  background-color: #4CAF50; /* Green */
+  color: rgb(139, 132, 132);
+  padding: 10px 25px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+.search-button i{
+color: #fff;
+}
+.topbar .theme-button{
+  margin-left: auto;  
+  padding-right: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.theme-button .light{
+  background-color: #34AF6D;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  width: fit-content;
+}
+.theme-button .dark{
+  background-color: rgb(226, 226, 226);
+  /* color: navy; */
+  padding: 5px;
+  border-radius: 5px;
+  width: fit-content;
+}
+/* .theme-button .white i{
+ 
+  font-size: 20px;
+} */
+.theme-button .dark i{
+  color: rgb(18, 18, 46);
+  font-size: 20px;
+}
+.theme-button .light i{
+  color: #fff;
+  font-size: 20px;
+}
+
 .main-top{
   display: flex;
   width: 100%;
@@ -100,16 +177,16 @@ a:hover i{
   color: rgb(110, 109, 109);
   cursor: pointer;
 }
-
 .section-display {
-  display: none;
+  display: none; 
+  
+}
+#jobs {
+ 
+  display: flex; 
+  flex-direction: column;
 }
 
-
-.section-display.active {
-  display: block;
-}
-/*home  section  */
 .main-top{
   
   display: flex;
@@ -123,6 +200,7 @@ a:hover i{
   color: rgb(110, 109, 109);
   cursor: pointer;
 }
+
 .main-tasks{
   text-align: center;
   margin-top: 20px;
@@ -165,11 +243,13 @@ a:hover i{
   margin-top: 20px;
   text-transform: capitalize;
 }
-.jobs-list{
+.jobs-list,
+ .subsribers-list{
   width: 100%;
   padding: 10px;
   margin-top: 10px;
-  background: #fff;
+ 
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
@@ -192,15 +272,12 @@ table thead tr{
   padding: 12px 15px;
 }
 .table tbody tr{
-  border-bottom: 1px solid #ddd;
+  background-color:  #f3f3f3;
+ 
 }
-.table tbody tr:nth-of-type(odd){
-  background: #f3f3f3;
-}
-.table tbody tr.active{
-  font-weight: bold;
-  color: #4AD489;
-}
+
+
+
 .table tbody tr:last-of-type{
   border-bottom: 2px solid #4AD489;
 }
@@ -215,4 +292,38 @@ table thead tr{
   background: #4AD489;
   color: #fff;
   transition: 0.5rem;
+}
+.cardbox{
+  display: flex;
+  
+  width: fit-content;
+  background: #fff;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 20px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+.cardbox:hover{
+background: #4AD489;
+transform: scale(1.10);
+}
+.cardbox .cardtext{
+  padding: 15px 20px;
+}
+.cardbox .cardtext h3{
+  font-size: 43px;
+  color: #34AF6D;
+}
+.cardbox .cardtext h{
+  font-size: 20px;
+  color: rgb(85, 83, 83);
+}
+.cardbox .iconBx{
+  padding: 15px 20px;
+}
+.cardbox .iconBx i{
+  font-size: 47px;
+  color: rgb(85, 83, 83);
 }
